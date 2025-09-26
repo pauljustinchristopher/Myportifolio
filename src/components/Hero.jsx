@@ -22,7 +22,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-20">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-bg opacity-10 dark:opacity-5"></div>
       
@@ -54,22 +54,34 @@ const Hero = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="text-center"
         >
-          {/* Profile Image */}
+          {/* Profile Image - Positioned prominently at the top */}
           <motion.div
-            variants={itemVariants}
-            className="mb-8"
+            variants={{
+              hidden: { y: -50, opacity: 0, scale: 0.8 },
+              visible: { y: 0, opacity: 1, scale: 1 }
+            }}
+            className="mb-12"
           >
             <div className="relative inline-block">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-48 h-48 mx-auto rounded-full overflow-hidden glass p-2"
+                initial={{ boxShadow: "0 0 0 0 rgba(59, 130, 246, 0)" }}
+                animate={{ 
+                  boxShadow: [
+                    "0 0 0 0 rgba(59, 130, 246, 0.3)",
+                    "0 0 0 20px rgba(59, 130, 246, 0)",
+                    "0 0 0 0 rgba(59, 130, 246, 0)"
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-56 h-56 mx-auto rounded-full overflow-hidden glass p-3 shadow-2xl"
               >
                 <img
                   src="/src/assets/paul.jpg"
@@ -83,21 +95,21 @@ const Hero = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-2 rounded-full border-2 border-dashed border-blue-500/30 dark:border-blue-400/30"
+                className="absolute -inset-3 rounded-full border-2 border-dashed border-blue-500/30 dark:border-blue-400/30"
               />
             </div>
           </motion.div>
 
           {/* Name and Title */}
-          <motion.div variants={itemVariants} className="mb-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
+          <motion.div variants={itemVariants} className="mb-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="text-gradient">Paul Justin</span>
               <br />
               <span className="text-gray-800 dark:text-white">Christopher</span>
             </h1>
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8"
+              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10"
             >
               Full Stack Developer & UI/UX Enthusiast
             </motion.p>
