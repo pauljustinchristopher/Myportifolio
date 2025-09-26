@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -23,15 +24,42 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // EmailJS configuration - You'll need to replace these with your actual values
+      const serviceId = 'service_pz3upb6'; // Replace with your EmailJS service ID
+      const templateId = 'template_lwntvvj'; // Replace with your EmailJS template ID  
+      const publicKey = '3wZH1taTt2dxE_Z15'; // Replace with your EmailJS public key
+      
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'pauljustinchristopher@gmail.com', // Your email
+      };
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
       setIsSubmitting(false);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
       
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000);
-    }, 1000);
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+      
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setIsSubmitting(false);
+      setSubmitStatus('error');
+      
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }
   };
 
   const socialLinks = [
@@ -206,15 +234,21 @@ const Contact = () => {
               </motion.div>
 
               {/* Success Message */}
-              {submitStatus === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-lg text-green-700 dark:text-green-400"
-                >
-                  ✅ Message sent successfully! I'll get back to you soon.
-                </motion.div>
-              )}
+              {submitStatus && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`p-4 rounded-lg ${
+                  submitStatus === 'success'
+                    ? 'bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400'
+                    : 'bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400'
+                }`}
+              >
+                {submitStatus === 'success' 
+                  ? '✅ Email sent successfully! I\'ll get back to you soon.' 
+                  : '❌ Failed to send email. Please try again or contact me directly at pauljustinchristopher@gmail.com'}
+              </motion.div>
+            )}
             </form>
           </motion.div>
 
