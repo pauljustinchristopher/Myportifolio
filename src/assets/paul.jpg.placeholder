@@ -1,4 +1,0 @@
-// This is a placeholder for the profile image
-// Replace this with your actual profile image at src/assets/paul.jpg
-// The components will fall back to a generated avatar if the image is not found
-export default null;

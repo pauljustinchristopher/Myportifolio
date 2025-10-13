@@ -93,7 +93,7 @@ const About = () => {
                 className="relative z-10"
               >
                 <img
-                  src="/src/assets/paul.jpg"
+                  src="/src/assets/profile.jpg"
                   alt="Paul Justin Christopher working"
                   className="rounded-2xl shadow-2xl w-full"
                   onError={(e) => {
@@ -107,27 +107,7 @@ const About = () => {
               <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-purple-500/10 dark:bg-purple-400/5 rounded-2xl blur-2xl"></div>
             </div>
 
-            {/* Floating elements */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="absolute top-8 -left-8 glass p-4 rounded-lg shadow-lg"
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium">Available for work</span>
-              </div>
-            </motion.div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-              className="absolute bottom-8 -right-8 glass p-4 rounded-lg shadow-lg"
-            >
-              <div className="flex items-center space-x-2">
-                <span className="text-sm font-medium">🚀 Always learning</span>
-              </div>
-            </motion.div>
           </motion.div>
         </motion.div>
       </div>

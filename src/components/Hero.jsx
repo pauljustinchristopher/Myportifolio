@@ -85,7 +85,7 @@ const Hero = () => {
                 className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 mx-auto rounded-full overflow-hidden glass p-2 sm:p-3 shadow-2xl relative z-10"
               >
                 <img
-                  src="/src/assets/paul.jpg"
+                  src="/src/assets/profile.jpg"
                   alt="Paul Justin Christopher"
                   className="w-full h-full object-cover rounded-full"
                   onError={(e) => {

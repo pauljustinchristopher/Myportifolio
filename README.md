@@ -182,10 +182,4 @@ The contact form includes:
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build locally
 
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
 Built with ❤️ by Paul Justin Christopher using React, Tailwind CSS, and Framer Motion.

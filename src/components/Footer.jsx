@@ -169,7 +169,7 @@ const Footer = () => {
                 transition={{ duration: 0.6 }}
                 className="text-gray-400 text-sm mb-4 md:mb-0"
               >
-                © {currentYear} Paul Justin Christopher. All rights reserved. Built with ❤️ using React & Tailwind CSS.
+                © {currentYear} Paul Justin Christopher. All rights reserved.
               </motion.p>
               
               {/* Back to Top Button */}
